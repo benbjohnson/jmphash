@@ -6,9 +6,9 @@ type Hasher struct {
 	n int32
 }
 
-// New returns a new Jump Consistent Hash.
+// NewHasher returns a new instance of Hasher.
 // If the number of of buckets is less than or equal to zero then one bucket is used.
-func New(n int) *Hasher {
+func NewHasher(n int) *Hasher {
 	if n <= 0 {
 		n = 1
 	}

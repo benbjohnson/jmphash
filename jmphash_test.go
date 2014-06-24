@@ -25,7 +25,7 @@ func testHasher_Hash(t *testing.T, maxKey uint64, maxN uint32) {
 		bucketN %= maxN
 
 		// Create a new hasher.
-		h := New(int(bucketN))
+		h := NewHasher(int(bucketN))
 
 		// Hash and verify each key is within the appropriate range.
 		for _, key := range keys {
@@ -55,7 +55,7 @@ func testHasher_Hash_Move(t *testing.T, maxN uint32) {
 		// Create a new hasher.
 		n0 = (n0 % maxN) + 1
 		n1 = (n1 % maxN) + 1
-		h0, h1 := New(int(n0)), New(int(n1))
+		h0, h1 := NewHasher(int(n0)), NewHasher(int(n1))
 
 		// Determine the number of keys that have to move.
 		var moved int
@@ -91,7 +91,7 @@ func BenchmarkHasherHashN1000(b *testing.B)  { benchmarkHasherHash(b, 1000) }
 func BenchmarkHasherHashN10000(b *testing.B) { benchmarkHasherHash(b, 10000) }
 
 func benchmarkHasherHash(b *testing.B, n int) {
-	h := New(n)
+	h := NewHasher(n)
 	for i := 0; i < b.N; i++ {
 		if x := h.Hash(uint64(i)); x > n {
 			b.Fatal("invalid hash:", x)
