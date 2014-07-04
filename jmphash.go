@@ -1,7 +1,6 @@
 package jmphash
 
 // Hasher represents a Jump Consistent Hasher.
-// This is not thread safe.
 type Hasher struct {
 	n int32
 }
