@@ -17,7 +17,7 @@ import "github.com/benbjohnson/jmphash"
 
 func main() {
 	// Create a hash with 100 buckets.
-	h := jmphash.New(100)
+	h := jmphash.NewHasher(100)
 
 	// Map keys to their appropriate buckets.
 	bucket := h.Hash(12387)
